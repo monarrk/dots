@@ -1,0 +1,25 @@
+if [[ -z $2 ]]; then
+        AMNT=5
+else
+        AMNT=$2
+fi
+
+if [[ -z $1 ]]; then
+        echo "Please specify an option 'up' or 'down'"
+        exit 0
+fi
+
+case $1 in
+        "up"  ) pactl set-sink-volume 0 +"$AMNT"% ;;
+        "down") pactl set-sink-volume 0 -"$AMNT"% ;;
+        "mute") pactl set-sink-volume 0 0
+                echo "Muted audio"
+                exit 0
+                ;;
+        *     ) echo "$1 is not a valid option"
+                exit 0
+                ;;
+esac
+
+echo "Changed the volume by $AMNT percent!"
+exit 0
