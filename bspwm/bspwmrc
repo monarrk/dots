@@ -21,4 +21,4 @@ feh --bg-scale /home/skye/Pictures/wp/color+boxes.jpeg
 
 volcli up 1
 
-/home/skye/.config/lemonbar/bar.sh | lemonbar
+$HOME/.config/lemonbar/bar.sh | lemonbar
