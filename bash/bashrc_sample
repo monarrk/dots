@@ -1,0 +1,16 @@
+alias ls='ls --color=always'
+alias sl='sl | lolcat'
+alias neofetch="neofetch | lolcat"
+alias zzz="sudo zzz && logout"
+
+PS1="{[\u@\h \W]} > "
+function print_logo() {
+        clear
+        printf "\n\n\n"
+        write.sh "$(/etc/welcome.txt)" 0.005 && echo
+        sleep 0.1
+        echo "Welcome back!"
+        sleep 1
+        clear
+}
+print_logo
