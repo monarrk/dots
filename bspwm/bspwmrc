@@ -17,8 +17,8 @@ bspc rule -a Screenkey manage=off
 
 bspc monitor eDP1 -d I II III IV V VI VII VIII IX
 
-feh --bg-scale /home/skye/Pictures/wp/color+boxes.jpeg
+feh --randomize --bg-fill /home/skye/Pictures/wp/*
 
 volcli up 1
 
-$HOME/.config/lemonbar/bar.sh | lemonbar
+/home/skye/.config/lemonbar/bar.sh | lemonbar
