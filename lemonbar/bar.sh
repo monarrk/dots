@@ -4,7 +4,7 @@
 colors[0]="FFFFFF"
 colors[1]="00DDFF"
 colors[2]="FF00AA"
-COLOR="${colors[$(($RANDOM % 3))]}"
+COLOR="${colors[$(( ( RANDOM % 3 ) ))]}"
 
 # Define the clock
 Clock() {
@@ -20,15 +20,17 @@ Battery() {
 }
 
 Network() {
-        NET="$(iwgetid -s wlo1)"
-        if [[ ! -z $NET ]]; then
-                echo "$NET"
-        else
-                echo "none"
-        fi
+	NET="$(iwgetid -s wlo1)"
+	if [[ ! -z $NET ]]; then
+		echo "$NET"
+	else
+		echo "none"
+	fi
 }
 
-while xset q &> /dev/null; do # only run if an x session is running
-        echo "%{r}%{F$COLOR}network: $(Network) || time: $(Clock) || battery:$(Battery)% "
-        sleep 1
+# Print the percentage
+# Print the clock
+while xset q &> /dev/null; do
+	echo "%{r}" "%{F#$COLOR}" "color: $COLOR network: $(Network) || time: $(Clock) || battery:$(Battery)% "
+	sleep 1
 done
