@@ -13,4 +13,7 @@ function print_logo() {
         sleep 1
         clear
 }
-print_logo
+
+if ! xset q &>/dev/null; then # only run if there's no x session running
+        print_logo
+fi
