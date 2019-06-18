@@ -30,11 +30,7 @@ Network() {
 
 # Print the percentage
 # Print the clock
-while :; do
-	if [[ xset q &> /dev/null ]]; then
-		echo "%{r}" "%{F#$COLOR}" "color: $COLOR || network: $(Network) || time: $(Clock) || battery:$(Battery)% "
-		sleep 1
-	else
-		break
-	fi
+while xset q &> /dev/null; do
+	echo "%{r}" "%{F#$COLOR}" "color: $COLOR || network: $(Network) || time: $(Clock) || battery:$(Battery)% "
+	sleep 1
 done
