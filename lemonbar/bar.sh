@@ -1,22 +1,27 @@
 #!/usr/bin/bash
 
 #colors
-colors[0]="FFFFFF"
-colors[1]="00DDFF"
-colors[2]="FF00AA"
-COLOR="${colors[$(( ( RANDOM % 3 ) ))]}"
+COLOR="#FFFFFF"
 
 # Define the clock
 Clock() {
-        DATETIME=$(date "+%a %b %d, %T")
+        DATETIME=$(date "+%a %b %d, %r %Z")
 
         echo -n "$DATETIME"
 }
 
 #Define the battery
 Battery() {
-        BATPERC=$(acpi --battery | cut -d, -f2)
-        echo "$BATPERC"
+        RAWNUM=$(acpi --battery | cut -d, -f2)
+#	IFS='' read -ra SPLIT <<< "$BATPERC"
+#	for i in "${SPLIT[$((SPLIT[#]-1))]}"; do
+#       	RAWNUM=$RAWNUMB$i
+#	done
+
+	if [[ $RAWNUM -lt 20 ]]; then
+		RAWNUM="%{F#FF0000}$RAWNUM"
+	fi
+        echo "$RAWNUM"
 }
 
 Network() {
@@ -31,6 +36,6 @@ Network() {
 # Print the percentage
 # Print the clock
 while xset q &> /dev/null; do
-	echo "%{r}" "%{F#$COLOR}" "color: $COLOR || network: $(Network) || time: $(Clock) || battery:$(Battery)% "
+	echo "%{r}%{F#$COLOR} <color: $COLOR> <volume: $(ponymix get-volume)> <network: $(Network)> <time: $(Clock)> <battery:$(Battery)>"
 	sleep 1
 done
