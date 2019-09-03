@@ -15,8 +15,6 @@ bspc rule -a Screenkey manage=off
 
 bspc monitor -d I II III IV V VI VII VIII IX
 
-pulseaudio --start
-
 feh --bg-fill /home/skye/Pictures/wp/obey.png
 
 /home/skye/.config/lemonbar/bar.sh | lemonbar -p
