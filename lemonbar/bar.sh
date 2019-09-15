@@ -23,6 +23,6 @@ Battery() {
 }
 
 while xset q &> /dev/null; do
-	echo "%{r}<volume: $(ponymix get-volume)> <network: $(Network)> <time: $(Clock)> <battery:$(Battery)>  "
+	echo "%{B#000000}%{r}<volume: $(ponymix get-volume)> <network: $(Network)> <time: $(Clock)> <battery:$(Battery)>  "
 	sleep 1
 done

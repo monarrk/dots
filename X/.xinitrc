@@ -5,9 +5,6 @@ xsetroot -solid \#FFFFFF -cursor_name left_ptr
 xbacklight -set 10
 xrdb ~/.Xresources
 
-# set desktop with custom effect
-betterlockscreen -w dim
-
 xcompmgr -c -r 3 -o 0.25 -l 5 -t 5 &
 
 sxhkd &

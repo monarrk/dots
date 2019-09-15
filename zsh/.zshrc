@@ -1,7 +1,7 @@
 # Created by skye for 5.7.1
 
 autoload -U colors && colors
-PS1="[%{$fg[blue]%}%n%{$reset_color%}@%{$fg[blue]%}%m%{$reset_color%}::%{$fg[cyan]%}%.%{$reset_color%}] %{$reset_color%}%# "
+PS1="[%{$fg[blue]%}%n%{$reset_color%}@%{$fg[blue]%}%m%{$reset_color%}::%{$fg[cyan]%}%.%{$reset_color%}] %{$reset_color%}$ "
 
 source ~/.discord.conf
 clear 
@@ -16,6 +16,7 @@ alias pls="sudo"
 alias logout="reset && logout"
 alias shutdown="printf '\n\tShutting down now!\n' && sudo shutdown -h -P now"
 alias getnet="iwgetid -s wlo1"
+alias push="git push origin master"
 
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 
