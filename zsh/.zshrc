@@ -1,10 +1,18 @@
 # Created by skye for 5.7.1
 
+COLOR="green"
+
 autoload -U colors && colors
-PS1="[%{$fg[blue]%}%n%{$reset_color%}@%{$fg[blue]%}%m%{$reset_color%}::%{$fg[cyan]%}%.%{$reset_color%}] %{$reset_color%}$ "
+if ! xset -q &> /dev/null; then
+	PS1="%{$fg[$COLOR]%}[%{$reset_color%}%n%{$fg[$COLOR]%}@%{$reset_color%}%m%{$fg[$COLOR]%}::%{$reset_color%}%.%{$fg[$COLOR]%}]$%{$reset_color%} "
+else
+	PS1="%{$fg[black]%}[%{$reset_color%}%n%{$fg[black]%}@%{$reset_color%}%m%{$fg[black]%}::%{$reset_color%}%.%{$fg[black]%}]$%{$reset_color%} "	
+fi
 
 source ~/.discord.conf
 clear 
+
+wcon_startup
 
 export PATH="$PATH:/usr/sbin:/sbin:/usr/share/xbps-git/usr/bin:~/.local/bin:~/.nix-profile/bin"
 

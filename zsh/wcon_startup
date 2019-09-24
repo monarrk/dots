@@ -1,0 +1,14 @@
+#!/usr/bin/lua
+
+stdout = io.open("/dev/stdout", "w");
+
+stdout:write("What network do you want to connect to? (blank for none)\n: ")
+stdout:close()
+net = io.read()
+
+if net ~= "" then
+	os.execute("wcon "..net)
+else
+	print("Will not connect to a network!")
+end
+
