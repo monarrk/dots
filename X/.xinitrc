@@ -7,5 +7,6 @@ xrdb ~/.Xresources
 
 xcompmgr -c -r 3 -o 0.25 -l 5 -t 5 &
 
+autocutsel &
 sxhkd &
 dbus-launch bspwm

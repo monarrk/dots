@@ -12,7 +12,7 @@ Network() {
 	if [[ ! -z $NET ]]; then
 		echo "$NET"
 	else
-		echo "none"
+		echo "%{F#FF0000}none%{F#FFFFFF}"
 	fi
 }
 
@@ -22,7 +22,16 @@ Battery() {
         echo "$BATPERC"
 }
 
+Volume() {
+	VOL=$(ponymix get-volume)
+	ponymix is-muted
+	if [[ $? == 0 ]]; then
+		ISMUTE=" %{F#FF0000}[MUTE]%{F#FFFFFF}"
+	fi
+	echo "$VOL$ISMUTE"
+}
+
 while xset q &> /dev/null; do
-	echo "%{B#000000}%{r}<volume: $(ponymix get-volume)> <network: $(Network)> <time: $(Clock)> <battery:$(Battery)>  "
+	echo "%{B#000000}%{r}<volume: $(Volume)> <network: $(Network)> <time: $(Clock)> <battery:$(Battery)>  "
 	sleep 1
 done

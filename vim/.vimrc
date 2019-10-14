@@ -7,4 +7,4 @@ if !exists('g:CmptrClr_user_hl')
   let g:CmptrClr_user_hl = {}
 endif
 
-colo rockets-away
+colo vadelma

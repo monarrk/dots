@@ -1,20 +1,23 @@
 # Created by skye for 5.7.1
 
 COLOR="green"
+COLOR2="red"
 
 autoload -U colors && colors
 if ! xset -q &> /dev/null; then
 	PS1="%{$fg[$COLOR]%}[%{$reset_color%}%n%{$fg[$COLOR]%}@%{$reset_color%}%m%{$fg[$COLOR]%}::%{$reset_color%}%.%{$fg[$COLOR]%}]$%{$reset_color%} "
 else
-	PS1="%{$fg[black]%}[%{$reset_color%}%n%{$fg[black]%}@%{$reset_color%}%m%{$fg[black]%}::%{$reset_color%}%.%{$fg[black]%}]$%{$reset_color%} "	
+	PS1="%{$fg[$COLOR2]%}[%{$reset_color%}%n%{$fg[$COLOR2]%}@%{$reset_color%}%m%{$fg[$COLOR2]%}::%{$reset_color%}%.%{$fg[$COLOR2]%}]$%{$reset_color%} "	
 fi
 
 source ~/.discord.conf
 clear 
 
-wcon_startup
-
 export PATH="$PATH:/usr/sbin:/sbin:/usr/share/xbps-git/usr/bin:~/.local/bin:~/.nix-profile/bin"
+
+if ! xset -q &> /dev/null; then
+	wcon_startup
+fi
 
 alias ls="ls --color=auto"
 alias la="ls -A"
