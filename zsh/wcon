@@ -19,7 +19,7 @@ sudo killall wpa_supplicant dhcpcd
 printf "OK\n"
 
 printf "$GRN[wcon] $RES::$BLU Starting wpa_supplicant with conf file '/etc/wpa/$1.conf'...$RES"
-sudo wpa_supplicant -B -D wext -i wlo1 -c "/etc/wpa/$1.conf" 1> /dev/null || fail
+sudo wpa_supplicant -B -Dnl80211 -iwlo1 -c/etc/wpa/$1.conf
 echo -e "$GRN OK$RES"
 printf "$GRN[wcon] $RES::$BLU Running dhcpcd...\n$RES"
 sudo dhcpcd &> /dev/null || fail

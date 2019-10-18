@@ -17,6 +17,21 @@ super + {a,z}
 super + shift + a
  pactl set-sink-mute 0 toggle
 
+# brightness control
+super + t
+ xbacklight -inc 5
+
+super + y
+ xbacklight -dec 5
+
+# Suspend session
+super + s
+ sudo pm-suspend
+
+# Get a screenshot
+super + space 
+ scrot $HOME/Pictures/ss.png
+
 #
 # bspwm hotkeys
 #

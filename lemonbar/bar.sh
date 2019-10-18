@@ -31,7 +31,12 @@ Volume() {
 	echo "$VOL$ISMUTE"
 }
 
+Window() {
+	FW="$(pfw)"
+	echo $(wname $FW)
+}
+
 while xset q &> /dev/null; do
-	echo "%{B#000000}%{r}<volume: $(Volume)> <network: $(Network)> <time: $(Clock)> <battery:$(Battery)>  "
+	echo "%{B#000000}%{l} [ $(Window) ] %{r}<volume: $(Volume)> <brightness: $(xbacklight -get)> <network: $(Network)> <time: $(Clock)> <battery:$(Battery)>  "
 	sleep 1
 done

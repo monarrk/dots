@@ -1,7 +1,7 @@
 # Created by skye for 5.7.1
 
 COLOR="green"
-COLOR2="red"
+COLOR2="blue"
 
 autoload -U colors && colors
 if ! xset -q &> /dev/null; then
@@ -13,30 +13,30 @@ fi
 source ~/.discord.conf
 clear 
 
-export PATH="$PATH:/usr/sbin:/sbin:/usr/share/xbps-git/usr/bin:~/.local/bin:~/.nix-profile/bin"
+export PATH="$PATH:/usr/sbin:/sbin:/home/skye/.local/bin:~/.nix-profile/bin:/usr/pack/bin"
 
 if ! xset -q &> /dev/null; then
 	wcon_startup
 fi
 
+# general aliases
 alias ls="ls --color=auto"
 alias la="ls -A"
-alias wconnect='sudo killall wpa_supplicant; sudo wpa_supplicant -B -D wext -i wlo1 -c'
 alias wscan="sudo iwlist wlo1 scan | grep ESSID"
 alias pls="sudo"
 alias logout="reset && logout"
 alias shutdown="printf '\n\tShutting down now!\n' && sudo shutdown -h -P now"
 alias getnet="iwgetid -s wlo1"
 alias push="git push origin master"
+alias pull="git pull origin master"
+
+# Radare aliases
+alias rabin="rabin2"
+alias r="r2"
 
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+export LD_PRELOAD=""
 
 export PATH="$HOME/.cargo/bin:$PATH"
 if [ -e /home/skye/.nix-profile/etc/profile.d/nix.sh ]; then . /home/skye/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
-# zig/cmake
-CLANG_INCLUDE_DIRS=/usr/include
-CLANG_LIBRARIES=/nix/store/ih4nxam3q3hq8bfpy5x8pij1qq7m049g-clang-7.1.0/lib/cmake/clang
-
-export PATH=$PATH:/usr/pack/binexport PATH=$PATH:/usr/pack/bin
-export JAVA_HOME=/nix/store/9jx2zffd9vs53zxkzmkiq7pd97qbbx5c-openjdk-12.0.2-ga/include
+export HISTFILE=/home/skye/.zhistory
