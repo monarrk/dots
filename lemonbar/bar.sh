@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/local/bin/zsh
 
 # Define the clock
 Clock() {
@@ -7,36 +7,20 @@ Clock() {
         echo -n "$DATETIME"
 }
 
-Network() {
-	NET="$(iwgetid -s wlo1)"
-	if [[ ! -z $NET ]]; then
-		echo "$NET"
-	else
-		echo "%{F#FF0000}none%{F#FFFFFF}"
-	fi
-}
-
 #Define the battery
 Battery() {
-        BATPERC=$(acpi --battery | cut -d, -f2)
-        echo "$BATPERC"
-}
-
-Volume() {
-	VOL=$(ponymix get-volume)
-	ponymix is-muted
-	if [[ $? == 0 ]]; then
-		ISMUTE=" %{F#FF0000}[MUTE]%{F#FFFFFF}"
+        BATPERC=$(apm -l)
+	if [ BATPERC -lt 15 ]; then
+		BATPERC="%{F#FF0000}$BATPERC"
 	fi
-	echo "$VOL$ISMUTE"
-}
 
-Window() {
-	FW="$(pfw)"
-	echo $(wname $FW)
+	if [ $(apm -a) -eq 1 ]; then
+		COL="%{F#FFFF00}"
+	fi
+        echo "$COL$BATPERC%%%{F#FFFFFF}"
 }
 
 while xset q &> /dev/null; do
-	echo "%{B#000000}%{l} [ $(Window) ] %{r}<volume: $(Volume)> <brightness: $(xbacklight -get)> <network: $(Network)> <time: $(Clock)> <battery:$(Battery)>  "
+	echo "%{r}%{F#FFFFFF}<volume: $(volcli get)> <brightness: $(xbacklight -get)> <time: $(Clock)> <battery: $(Battery)>  "
 	sleep 1
 done

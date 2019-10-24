@@ -15,7 +15,6 @@ bspc rule -a Screenkey manage=off
 
 bspc monitor -d I II III IV V VI VII VIII IX
 
-feh --bg-tile /home/skye/Pictures/wp/dot-grid.png
-pulseaudio --start
+feh --bg-fill ~/Pictures/wp/cereal.png
 
-/home/skye/.config/lemonbar/bar.sh | lemonbar -p
+/home/skye/.config/lemonbar/bar.sh | lemonbar
