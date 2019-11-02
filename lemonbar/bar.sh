@@ -1,4 +1,4 @@
-#!/usr/local/bin/zsh
+#!/usr/bin/env zsh
 
 # Define the clock
 Clock() {
@@ -10,7 +10,7 @@ Clock() {
 #Define the battery
 Battery() {
         BATPERC=$(apm -l)
-	if [ BATPERC -lt 15 ]; then
+	if [ $BATPERC -lt 15 ]; then
 		BATPERC="%{F#FF0000}$BATPERC"
 	fi
 
@@ -20,7 +20,13 @@ Battery() {
         echo "$COL$BATPERC%%%{F#FFFFFF}"
 }
 
-while xset q &> /dev/null; do
-	echo "%{r}%{F#FFFFFF}<volume: $(volcli get)> <brightness: $(xbacklight -get)> <time: $(Clock)> <battery: $(Battery)>  "
+Mute() {
+	if [ $(mixerctl outputs.master.mute | cut -d"=" -f2)=="on" ]; then
+		echo " %{F#FF0000}[MUTE]%{F#FFFFFF}"
+	fi
+}
+
+while xset -q &> /dev/null; do
+	echo "%{r}<volume: $(volcli get)$(Mute)> <brightness: $(xbacklight -get)> <time: $(Clock)> <battery: $(Battery)>  "
 	sleep 1
 done

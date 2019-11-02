@@ -8,21 +8,30 @@ super + Return
 
 # program launcher
 super + d
- rofi -show run
-
+ rofi -show run window,drun,ssh -theme DarkBlue
 # volume control
 super + a
  volcli up
 
 super + z
  volcli down
+
+super + shift + a
+ volcli up 1
+
+super + shift + z
+ volcli down 1
+
+super + shift + d
+ volcli toggle
+
 #
 # bspwm hotkeys
 #
 
 # quit/restart bspwm
 super + shift + {q,r}
- bspc {quit,wm -r}
+ bspc {quit,wm -r} && kill -9 $(pgrep lemonbar)
 
 # close and kill
 super + {_,shift + }w

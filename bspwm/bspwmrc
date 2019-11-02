@@ -15,6 +15,6 @@ bspc rule -a Screenkey manage=off
 
 bspc monitor -d I II III IV V VI VII VIII IX
 
-feh --bg-fill ~/Pictures/wp/cereal.png
+/home/skye/.fehbg
 
 /home/skye/.config/lemonbar/bar.sh | lemonbar
