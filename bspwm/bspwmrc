@@ -1,7 +1,5 @@
 #! /bin/sh
 
-sxhkd &
-
 bspc config border_width         2
 bspc config window_gap          12
 
@@ -16,5 +14,4 @@ bspc rule -a Screenkey manage=off
 bspc monitor -d I II III IV V VI VII VIII IX
 
 /home/skye/.fehbg
-
 /home/skye/.config/lemonbar/bar.sh | lemonbar

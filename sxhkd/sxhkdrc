@@ -4,26 +4,14 @@
 
 # terminal emulator
 super + Return
- konsole
+ st 
 
 # program launcher
 super + d
- rofi -show run window,drun,ssh -theme DarkBlue
-# volume control
-super + a
- volcli up
+ rofi -show run 
 
-super + z
- volcli down
-
-super + shift + a
- volcli up 1
-
-super + shift + z
- volcli down 1
-
-super + shift + d
- volcli toggle
+super + q
+ sudo pm-suspend
 
 #
 # bspwm hotkeys
