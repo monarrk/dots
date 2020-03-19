@@ -10,8 +10,8 @@ super + Return
 super + d
  rofi -show run 
 
-super + q
- sudo pm-suspend
+super + shift + s
+ scrot
 
 #
 # bspwm hotkeys
@@ -19,7 +19,7 @@ super + q
 
 # quit/restart bspwm
 super + shift + {q,r}
- bspc {quit,wm -r} && kill -9 $(pgrep lemonbar)
+ bspc {quit,wm -r}
 
 # close and kill
 super + {_,shift + }w
